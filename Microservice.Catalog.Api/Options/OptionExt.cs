@@ -1,4 +1,6 @@
-﻿namespace Microservice.Catalog.Api.Options
+﻿using Microsoft.Extensions.Options;
+
+namespace Microservice.Catalog.Api.Options
 {
     public static class OptionExt
     {
@@ -8,6 +10,8 @@
                 .BindConfiguration("MongoOption")
                 .ValidateDataAnnotations()
                 .ValidateOnStart();
+
+            services.AddSingleton(sp => sp.GetRequiredService<IOptions<MongoOption>>().Value);
 
             return services;
         }
