@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using MongoDB.Driver.Core.Operations;
-
-namespace Microservice.Catalog.Api.Features.Categories.Create
+﻿namespace Microservice.Catalog.Api.Features.Categories.Create
 {
     public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCommand>
     {
