@@ -1,4 +1,5 @@
-﻿using Microservice.Shared.Filters;
+﻿using Asp.Versioning.Builder;
+using Microservice.Shared.Filters;
 
 namespace Microservice.Catalog.Api.Features.Categories.Create
 {
@@ -9,6 +10,7 @@ namespace Microservice.Catalog.Api.Features.Categories.Create
             //http://localhost:5000/api/categories
             group.MapPost("/", async (CreateCategoryCommand command, IMediator mediator) => (await mediator.Send(command)).ToGenericResult())
                 .WithName("CreateCategory")
+                .MapToApiVersion(1.0)
                 .AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
 
             return group;

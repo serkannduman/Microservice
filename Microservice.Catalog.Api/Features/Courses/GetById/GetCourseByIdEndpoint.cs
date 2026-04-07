@@ -29,7 +29,8 @@ namespace Microservice.Catalog.Api.Features.Courses.GetById
         public static RouteGroupBuilder GetByIdCourseGroupItemEndpoint(this RouteGroupBuilder group)
         {
             group.MapGet("/{id:guid}", async (IMediator mediator, Guid id) =>
-            (await mediator.Send(new GetCourseByIdQuery(id))).ToGenericResult()).WithName("GetByIdCourse");
+            (await mediator.Send(new GetCourseByIdQuery(id))).ToGenericResult()).MapToApiVersion(1.0)
+            .WithName("GetByIdCourse");
 
             return group;
         }
